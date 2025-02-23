@@ -9,6 +9,7 @@ const DEFAULT_COUNT = 5;
 const MAX_OTP_LENGTH = 6;
 
 const args = process.argv.slice(2);
+console.dir(process.argv, { depth: null });
 const showPrivateKey = args.includes('--show-private') || args.includes('-sp');
 const noCheck = args.includes('--no-check');
 
