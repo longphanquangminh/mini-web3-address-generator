@@ -35,17 +35,16 @@ const generateWallets = () => {
       const { publicKey, address, privateKey } = wallet || {};
 
       wallets.push({
-        number: i + 1,
-        publicKey,
         address: address?.toLowerCase(),
-        ...(showPrivateKey && { privateKey: privateKey }),
+        ...(showPrivateKey && { privateKey }),
+        ...(!showPrivateKey && { publicKey }),
       });
     } catch (error: any) {
       console.error(`Error deriving key ${i}:`, error?.response?.data || error?.message);
     }
   }
 
-  console.log('Generated wallets', wallets);
+  console.table(wallets);
 };
 
 function askForOTP(callback: (input: string) => void) {
